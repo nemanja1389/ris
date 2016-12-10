@@ -9,6 +9,11 @@ public abstract class SurfaceShape extends Shape {
 	
 	public SurfaceShape(){}
 	
+	public SurfaceShape(Color lineColor, Color internalColor){
+		super(lineColor);
+		this.internalColor=internalColor;
+	}
+	
 	public SurfaceShape(boolean selected, Color lineColor, Color internalColor){
 		super(selected, lineColor);
 		this.internalColor = internalColor;

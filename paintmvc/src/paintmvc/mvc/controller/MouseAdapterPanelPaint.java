@@ -9,6 +9,8 @@ import java.util.Iterator;
 import javax.swing.JColorChooser;
 import javax.swing.JTextArea;
 
+import paintmvc.dialogs.DialogCircle;
+import paintmvc.geometry.Circle;
 import paintmvc.geometry.Line;
 import paintmvc.geometry.Point;
 import paintmvc.geometry.Shape;
@@ -24,36 +26,35 @@ public class MouseAdapterPanelPaint extends MouseAdapter {
 	int mouseClicked = 0;
 	Point startPoint;
 	Color colorLine;
-	
+
 	public MouseAdapterPanelPaint(JTextArea txtAreaCord) {
 		this.txtArea = txtAreaCord;
 	}
-	
+
 	public MouseAdapterPanelPaint(JTextArea txtAreaCord, PaintModel model, PaintFrame frame) {
 		this.txtArea = txtAreaCord;
 		this.model = model;
 		this.frame = frame;
 	}
-	
-	
+
 	@Override
 	public void mouseExited(MouseEvent e) {
 		this.txtArea.setText("");
 	}
-	
+
 	@Override
-	public void mouseClicked(MouseEvent e){
-		if(frame.getTglbtnPoint().isSelected()){
+	public void mouseClicked(MouseEvent e) {
+		if (frame.getTglbtnPoint().isSelected()) {
 			colorLine = JColorChooser.showDialog(frame, "Izaberi boju", Color.BLACK);
-			if(colorLine == null){
+			if (colorLine == null) {
 				colorLine = Color.BLACK;
 			}
 			Point p = new Point(e.getX(), e.getY(), colorLine);
 			model.getShape().add(p);
-		} else if(frame.getTglbtnLine().isSelected()){
-			if(mouseClicked%2 == 0){
+		} else if (frame.getTglbtnLine().isSelected()) {
+			if (mouseClicked % 2 == 0) {
 				colorLine = JColorChooser.showDialog(frame, "Izaberi boju", Color.BLACK);
-				if(colorLine == null){
+				if (colorLine == null) {
 					colorLine = Color.BLACK;
 				}
 				startPoint = new Point(e.getX(), e.getY(), colorLine);
@@ -63,20 +64,33 @@ public class MouseAdapterPanelPaint extends MouseAdapter {
 				model.getShape().add(l);
 				mouseClicked = 0;
 			}
-		} else if(frame.getTglbtnSelect().isSelected()){
+		} else if (frame.getTglbtnSelect().isSelected()) {
 			Iterator it = model.getShape().iterator();
 			ArrayList select = new ArrayList<>();
 			Shape s1 = null;
-			while(it.hasNext()){
-				Shape s = (Shape)it.next();
+			while (it.hasNext()) {
+				Shape s = (Shape) it.next();
 				s.setSelected(false);
-				if(s.contains(e.getX(), e.getY())){
+				if (s.contains(e.getX(), e.getY())) {
 					select.add(s);
-					s1=s;
+					s1 = s;
 				}
 			}
-			if(s1 != null){
+			if (s1 != null) {
 				s1.setSelected(true);
+			}
+		} else if (frame.getTglbtnCircle().isSelected()) {
+			DialogCircle dialog = new DialogCircle();
+			dialog.setLocationRelativeTo(null);
+			dialog.getTxtXCrd().setEditable(false);
+			dialog.getTxtYCrd().setEditable(false);
+			dialog.getTxtXCrd().setText(String.valueOf(e.getX()));
+			dialog.getTxtYCrd().setText(String.valueOf(e.getY()));
+			dialog.setVisible(true);
+			try {
+				model.getShape().add(new Circle(new Point(e.getX(), e.getY(), dialog.getLineColor()), Integer.parseInt(dialog.getTxtRadius().getText()), dialog.getLineColor(), dialog.getInternalColor() ));
+			} catch (Exception e2) {
+				// TODO: handle exception
 			}
 		}
 	}
