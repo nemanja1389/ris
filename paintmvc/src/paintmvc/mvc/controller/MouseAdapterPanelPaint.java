@@ -10,10 +10,12 @@ import javax.swing.JColorChooser;
 import javax.swing.JTextArea;
 
 import paintmvc.dialogs.DialogCircle;
+import paintmvc.dialogs.DialogSquare;
 import paintmvc.geometry.Circle;
 import paintmvc.geometry.Line;
 import paintmvc.geometry.Point;
 import paintmvc.geometry.Shape;
+import paintmvc.geometry.Square;
 import paintmvc.mvc.model.PaintModel;
 import paintmvc.mvc.view.PaintFrame;
 import paintmvc.mvc.view.TestDialog;
@@ -88,7 +90,20 @@ public class MouseAdapterPanelPaint extends MouseAdapter {
 			dialog.getTxtYCrd().setText(String.valueOf(e.getY()));
 			dialog.setVisible(true);
 			try {
-				model.getShape().add(new Circle(new Point(e.getX(), e.getY(), dialog.getLineColor()), Integer.parseInt(dialog.getTxtRadius().getText()), dialog.getLineColor(), dialog.getInternalColor() ));
+				model.getShape().add(new Circle(new Point(e.getX(), e.getY(), dialog.getInternalColor()), Integer.parseInt(dialog.getTxtRadius().getText()), dialog.getLineColor(), dialog.getInternalColor() ));
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		} else if (frame.getTglbtnSquare().isSelected()){
+			DialogSquare dialog = new DialogSquare();
+			dialog.setLocationRelativeTo(null);
+			dialog.getTxtXCrd().setEditable(false);
+			dialog.getTxtYCrd().setEditable(false);
+			dialog.getTxtXCrd().setText(String.valueOf(e.getX()));
+			dialog.getTxtYCrd().setText(String.valueOf(e.getY()));
+			dialog.setVisible(true);
+			try {
+				model.getShape().add(new Square(new Point(e.getX(), e.getY(), dialog.getInternalColor()), Integer.parseInt(dialog.getTxtWidth().getText()), dialog.getLineColor(), dialog.getInternalColor()));
 			} catch (Exception e2) {
 				// TODO: handle exception
 			}

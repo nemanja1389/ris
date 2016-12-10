@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class DialogCircle extends JDialog {
 
@@ -104,9 +106,8 @@ public class DialogCircle extends JDialog {
 		contentPanel.add(lblLineColor);
 		
 		JButton btnLineColor = new JButton("Color");
-		btnLineColor.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
+		btnLineColor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				lineColor = JColorChooser.showDialog(null, "Choose line color", Color.BLACK);
 				if(lineColor == null){
 					lineColor = Color.BLACK;
@@ -121,9 +122,8 @@ public class DialogCircle extends JDialog {
 		contentPanel.add(lblInternalColor);
 		
 		JButton btnInternalColor = new JButton("Color");
-		btnInternalColor.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnInternalColor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				internalColor = JColorChooser.showDialog(null, "Choose line color", Color.WHITE);
 				if(internalColor == null){
 					internalColor = Color.WHITE;
@@ -138,9 +138,8 @@ public class DialogCircle extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
-				okButton.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
 						if (txtRadius.getText().length() > 0) {
 							try{
 								Integer.parseInt(txtRadius.getText());
@@ -166,6 +165,11 @@ public class DialogCircle extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						dispose();
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
