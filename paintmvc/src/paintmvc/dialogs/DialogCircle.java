@@ -112,6 +112,7 @@ public class DialogCircle extends JDialog {
 				if(lineColor == null){
 					lineColor = Color.BLACK;
 				}
+				btnLineColor.setBackground(lineColor);
 			}
 		});
 		btnLineColor.setBounds(100, 123, 89, 23);
@@ -128,6 +129,7 @@ public class DialogCircle extends JDialog {
 				if(internalColor == null){
 					internalColor = Color.WHITE;
 				}
+				btnInternalColor.setBackground(internalColor);
 			}
 		});
 		btnInternalColor.setBounds(100, 148, 89, 23);

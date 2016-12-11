@@ -10,6 +10,7 @@ import javax.swing.JColorChooser;
 import javax.swing.JTextArea;
 
 import paintmvc.dialogs.DialogCircle;
+import paintmvc.dialogs.DialogPoint;
 import paintmvc.dialogs.DialogRectangle;
 import paintmvc.dialogs.DialogSquare;
 import paintmvc.geometry.Circle;
@@ -120,6 +121,24 @@ public class MouseAdapterPanelPaint extends MouseAdapter {
 				model.getShape().add(new paintmvc.geometry.Rectangle(new Point(e.getX(), e.getY(), dialog.getLineColor()), Integer.parseInt(dialog.getTxtWidth().getText()), Integer.parseInt(dialog.getTxtHeight().getText()), dialog.getLineColor(), dialog.getInternalColor()));
 			} catch (Exception e2) {
 				// TODO: handle exception
+			}
+		} else if (frame.getTglbtnModify().isSelected()){
+			Iterator it = model.getShape().iterator();
+			while (it.hasNext()) {
+				Shape s = (Shape) it.next();
+				s.setSelected(false);
+				if (s.contains(e.getX(), e.getY())) {
+					if(s instanceof Point){
+						DialogPoint dialog = new DialogPoint((Point)s);
+						dialog.setLocationRelativeTo(null);
+						dialog.getTxtXCrd().setText(String.valueOf(((Point) s).getX()));
+						dialog.getTxtYCrd().setText(String.valueOf(((Point) s).getY()));
+						dialog.setVisible(true);
+						((Point) s).setX(Integer.parseInt(dialog.getTxtXCrd().getText()));
+						((Point) s).setY(Integer.parseInt(dialog.getTxtYCrd().getText()));
+						s.setLineColor(dialog.getLineColor());
+					}
+				}
 			}
 		}
 	}

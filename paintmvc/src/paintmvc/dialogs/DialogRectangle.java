@@ -9,6 +9,9 @@ import javax.swing.JColorChooser;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import paintmvc.mvc.model.PaintModel;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -18,6 +21,7 @@ import java.awt.event.ActionEvent;
 public class DialogRectangle extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
+	private PaintModel model;
 	private JTextField txtXCrd;
 	private JTextField txtYCrd;
 	private JTextField txtWidth;
@@ -118,6 +122,7 @@ public class DialogRectangle extends JDialog {
 				if(lineColor == null){
 					lineColor = Color.BLACK;
 				}
+				btnLineColor.setBackground(lineColor);
 			}
 		});
 		btnLineColor.setBounds(100, 146, 89, 23);
@@ -134,6 +139,7 @@ public class DialogRectangle extends JDialog {
 				if(internalColor == null){
 					internalColor = Color.WHITE;
 				}
+				btnInternalColor.setBackground(internalColor);
 			}
 		});
 		btnInternalColor.setBounds(100, 171, 89, 23);

@@ -28,6 +28,7 @@ public class PaintFrame extends JFrame {
 	private JToggleButton tglbtnCircle;
 	private JToggleButton tglbtnSquare;
 	private JToggleButton tglbtnRectangle;
+	private JToggleButton tglbtnModify;
 
 	public JButton getBtnDelete() {
 		return btnDelete;
@@ -100,6 +101,14 @@ public class PaintFrame extends JFrame {
 	public void setTglbtnRectangle(JToggleButton tglbtnRectangle) {
 		this.tglbtnRectangle = tglbtnRectangle;
 	}
+	
+	public JToggleButton getTglbtnModify() {
+		return tglbtnModify;
+	}
+
+	public void setTglbtnModify(JToggleButton tglbtnModify) {
+		this.tglbtnModify = tglbtnModify;
+	}
 
 	/**
 	 * Create the frame.
@@ -143,6 +152,10 @@ public class PaintFrame extends JFrame {
 		
 		btnDelete = new JButton("Delete");
 		pnlTool.add(btnDelete);
+		
+		tglbtnModify = new JToggleButton("Modify");
+		buttonGroup.add(tglbtnModify);
+		pnlTool.add(tglbtnModify);
 		
 		panel.setBackground(Color.WHITE);
 		contentPane.add(panel, BorderLayout.CENTER);

@@ -115,17 +115,18 @@ public class DialogSquare extends JDialog {
 			contentPanel.add(lblLineColor);
 		}
 		{
-			JButton brnLineColor = new JButton("Color");
-			brnLineColor.addActionListener(new ActionListener() {
+			JButton btnLineColor = new JButton("Color");
+			btnLineColor.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					lineColor = JColorChooser.showDialog(null, "Choose line color", Color.BLACK);
 					if(lineColor == null){
 						lineColor = Color.BLACK;
 					}
+					btnLineColor.setBackground(lineColor);
 				}
 			});
-			brnLineColor.setBounds(100, 123, 89, 23);
-			contentPanel.add(brnLineColor);
+			btnLineColor.setBounds(100, 123, 89, 23);
+			contentPanel.add(btnLineColor);
 		}
 		{
 			JLabel lblInternalColor = new JLabel("Internal color:");
@@ -140,6 +141,7 @@ public class DialogSquare extends JDialog {
 					if(internalColor == null){
 						internalColor = Color.WHITE;
 					}
+					btnInternalColor.setBackground(internalColor);
 				}
 			});
 			btnInternalColor.setBounds(100, 148, 89, 23);
