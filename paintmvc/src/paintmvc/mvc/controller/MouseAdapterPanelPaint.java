@@ -10,6 +10,7 @@ import javax.swing.JColorChooser;
 import javax.swing.JTextArea;
 
 import paintmvc.dialogs.DialogCircle;
+import paintmvc.dialogs.DialogLine;
 import paintmvc.dialogs.DialogPoint;
 import paintmvc.dialogs.DialogRectangle;
 import paintmvc.dialogs.DialogSquare;
@@ -126,16 +127,30 @@ public class MouseAdapterPanelPaint extends MouseAdapter {
 			Iterator it = model.getShape().iterator();
 			while (it.hasNext()) {
 				Shape s = (Shape) it.next();
-				s.setSelected(false);
 				if (s.contains(e.getX(), e.getY())) {
 					if(s instanceof Point){
 						DialogPoint dialog = new DialogPoint((Point)s);
 						dialog.setLocationRelativeTo(null);
 						dialog.getTxtXCrd().setText(String.valueOf(((Point) s).getX()));
 						dialog.getTxtYCrd().setText(String.valueOf(((Point) s).getY()));
+						dialog.getBtnColor().setBackground(s.getLineColor());
 						dialog.setVisible(true);
 						((Point) s).setX(Integer.parseInt(dialog.getTxtXCrd().getText()));
 						((Point) s).setY(Integer.parseInt(dialog.getTxtYCrd().getText()));
+						s.setLineColor(dialog.getLineColor());
+					} else if(s instanceof Line){
+						DialogLine dialog = new DialogLine((Line)s);
+						dialog.setLocationRelativeTo(null);
+						dialog.getTxtStartX().setText(String.valueOf(((Line) s).getStartPoint().getX()));
+						dialog.getTxtStartY().setText(String.valueOf(((Line) s).getStartPoint().getY()));
+						dialog.getTxtEndX().setText(String.valueOf(((Line) s).getEndPoint().getX()));
+						dialog.getTxtEndY().setText(String.valueOf(((Line) s).getEndPoint().getY()));
+						dialog.getBtnColor().setBackground(s.getLineColor());
+						dialog.setVisible(true);
+						((Line) s).getStartPoint().setX(Integer.parseInt(dialog.getTxtStartX().getText()));
+						((Line) s).getStartPoint().setY(Integer.parseInt(dialog.getTxtStartY().getText()));
+						((Line) s).getEndPoint().setX(Integer.parseInt(dialog.getTxtEndX().getText()));
+						((Line) s).getEndPoint().setY(Integer.parseInt(dialog.getTxtEndY().getText()));
 						s.setLineColor(dialog.getLineColor());
 					}
 				}

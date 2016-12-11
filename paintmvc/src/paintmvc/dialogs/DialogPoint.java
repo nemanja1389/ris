@@ -23,10 +23,19 @@ public class DialogPoint extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private Point point;
-	private Color lineColor = Color.BLACK;
+	private Color lineColor;
 	private JTextField txtXCrd;
 	private JTextField txtYCrd;
+	private JButton btnColor;
 	
+	public JButton getBtnColor() {
+		return btnColor;
+	}
+
+	public void setBtnColor(JButton btnColor) {
+		this.btnColor = btnColor;
+	}
+
 	public JTextField getTxtXCrd() {
 		return txtXCrd;
 	}
@@ -68,12 +77,13 @@ public class DialogPoint extends JDialog {
 			contentPanel.add(lblLineColor);
 		}
 		{
-			JButton btnColor = new JButton("Color");
+			btnColor = new JButton("Color");
 			btnColor.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					lineColor = JColorChooser.showDialog(null, "Choose line color", Color.BLACK);
 					if(lineColor == null){
 						lineColor = point.getLineColor();
+						btnColor.setBackground(lineColor);
 					}
 					btnColor.setBackground(lineColor);
 				}
@@ -132,7 +142,7 @@ public class DialogPoint extends JDialog {
 						try {
 							Integer.parseInt(txtXCrd.getText());
 							Integer.parseInt(txtYCrd.getText());
-							lineColor = point.getLineColor();
+							lineColor = btnColor.getBackground();
 							setVisible(false);
 						} catch (NumberFormatException e2) {
 							// TODO: handle exception
@@ -170,7 +180,7 @@ public class DialogPoint extends JDialog {
 							Integer.parseInt(txtXCrd.getText());
 							Integer.parseInt(txtYCrd.getText());
 							lineColor = point.getLineColor();
-							setVisible(false);
+							dispose();
 						} catch (NumberFormatException e2) {
 							// TODO: handle exception
 						}
