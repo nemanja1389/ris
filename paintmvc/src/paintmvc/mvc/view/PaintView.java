@@ -11,10 +11,29 @@ import javax.swing.JTextArea;
 
 import paintmvc.geometry.Shape;
 import paintmvc.mvc.model.PaintModel;
+import java.awt.event.MouseEvent;
 
 public class PaintView extends JPanel {
 	
 	PaintModel model;
+	private int x;
+	private int y;
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
 
 	public PaintView(PaintModel model){
 		this.model = model;

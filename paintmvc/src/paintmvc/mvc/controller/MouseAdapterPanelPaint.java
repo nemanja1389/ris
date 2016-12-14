@@ -15,6 +15,7 @@ import paintmvc.dialogs.DialogPoint;
 import paintmvc.dialogs.DialogRectangle;
 import paintmvc.dialogs.DialogSquare;
 import paintmvc.geometry.Circle;
+import paintmvc.geometry.HexagonAdapter;
 import paintmvc.geometry.Line;
 import paintmvc.geometry.Point;
 import paintmvc.geometry.Shape;
@@ -120,6 +121,19 @@ public class MouseAdapterPanelPaint extends MouseAdapter {
 			dialog.setVisible(true);
 			try {
 				model.getShape().add(new paintmvc.geometry.Rectangle(new Point(e.getX(), e.getY(), dialog.getLineColor()), Integer.parseInt(dialog.getTxtWidth().getText()), Integer.parseInt(dialog.getTxtHeight().getText()), dialog.getLineColor(), dialog.getInternalColor()));
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		} else if(frame.getTglbtnHexagon().isSelected()){
+			DialogSquare dialog = new DialogSquare();
+			dialog.setLocationRelativeTo(null);
+			dialog.getTxtXCrd().setEditable(false);
+			dialog.getTxtYCrd().setEditable(false);
+			dialog.getTxtXCrd().setText(String.valueOf(e.getX()));
+			dialog.getTxtYCrd().setText(String.valueOf(e.getY()));
+			dialog.setVisible(true);
+			try {
+				model.getShape().add(new HexagonAdapter(e.getX(), e.getY(), Integer.parseInt(dialog.getTxtWidth().getText()),  dialog.getLineColor(), dialog.getInternalColor()));
 			} catch (Exception e2) {
 				// TODO: handle exception
 			}

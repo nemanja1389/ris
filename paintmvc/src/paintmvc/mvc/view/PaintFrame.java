@@ -19,7 +19,6 @@ public class PaintFrame extends JFrame {
 
 	private JPanel contentPane;
 	private PaintView panel;
-	private JTextArea textArea;
 	private JToggleButton tglbtnPoint;
 	private JToggleButton tglbtnLine;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -29,6 +28,9 @@ public class PaintFrame extends JFrame {
 	private JToggleButton tglbtnSquare;
 	private JToggleButton tglbtnRectangle;
 	private JToggleButton tglbtnModify;
+	private JTextArea textArea;
+	private JToggleButton tglbtnHexagon;
+	
 
 	public JButton getBtnDelete() {
 		return btnDelete;
@@ -102,6 +104,15 @@ public class PaintFrame extends JFrame {
 		this.tglbtnRectangle = tglbtnRectangle;
 	}
 	
+	public JToggleButton getTglbtnHexagon() {
+		return tglbtnHexagon;
+	}
+
+	public void setTglbtnHexagon(JToggleButton tglbtnHexagon) {
+		this.tglbtnHexagon = tglbtnHexagon;
+	}
+
+	
 	public JToggleButton getTglbtnModify() {
 		return tglbtnModify;
 	}
@@ -145,6 +156,10 @@ public class PaintFrame extends JFrame {
 		tglbtnRectangle = new JToggleButton("Rectangle");
 		buttonGroup.add(tglbtnRectangle);
 		pnlTool.add(tglbtnRectangle);
+		
+		tglbtnHexagon = new JToggleButton("Hexagon");
+		buttonGroup.add(tglbtnHexagon);
+		pnlTool.add(tglbtnHexagon);
 		
 		tglbtnSelect = new JToggleButton("Select");
 		buttonGroup.add(tglbtnSelect);
