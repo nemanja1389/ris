@@ -2,6 +2,8 @@ package paintmvc.mvc.controller;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
@@ -87,6 +89,20 @@ public class PaintController {
 					}
 					if(s1 != null){
 						s1.setSelected(true);
+					}
+				}
+			}
+		});
+		this.frame.getBtnDelete().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				Iterator it = model.getShape().iterator();
+				while (it.hasNext()){
+					Shape s = (Shape)it.next();
+					if(s.isSelected()){						
+						int poruka = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da obrišete oblik?", "Upozorenje!", JOptionPane.WARNING_MESSAGE);
+						if (poruka == JOptionPane.OK_OPTION)
+							it.remove();
 					}
 				}
 			}

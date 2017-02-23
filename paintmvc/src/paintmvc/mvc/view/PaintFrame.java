@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.Color;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import java.awt.event.ActionEvent;
 
 public class PaintFrame extends JFrame {
 
@@ -25,6 +26,25 @@ public class PaintFrame extends JFrame {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JToggleButton tglbtnSelect;
 	private JButton btnDelete;
+	private JButton btnLineColor;
+	private Color lineColor = Color.BLACK;
+	private Color areaColor = Color.BLACK;
+	
+	public Color getLineColor(){
+		return lineColor;
+	}
+	
+	public void setLineColor(Color lineColor){
+		this.lineColor = lineColor;
+	}
+	
+	public Color getAreaColor(){
+		return areaColor;
+	}
+	
+	public void setAreaColor(Color areaColor){
+		this.areaColor = areaColor;
+	}
 
 	public JButton getBtnDelete() {
 		return btnDelete;
@@ -104,6 +124,14 @@ public class PaintFrame extends JFrame {
 		
 		btnDelete = new JButton("Delete");
 		pnlTool.add(btnDelete);
+		
+		btnLineColor = new JButton("Line color");
+		btnLineColor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		pnlTool.add(btnLineColor);
 		
 		panel.setBackground(Color.WHITE);
 		contentPane.add(panel, BorderLayout.CENTER);
