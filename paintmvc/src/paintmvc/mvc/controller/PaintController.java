@@ -3,6 +3,7 @@ package paintmvc.mvc.controller;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -42,9 +43,12 @@ public class PaintController {
 		this.model = model;
 		this.view = view;
 		this.frame = frame;
-		this.view.addMotionMouseListen(new MouseMotionAdapterPanelPaint(this.frame.getTextArea()));
-		this.view.addMouseListen(new MouseAdapterPanelPaint(this.frame.getTextArea(), this.model, this.frame));
-		this.frame.addButtonClick(new ActionListenerClikcDelete(this.model));
+		this.view.addMotionMouseListen(new MouseMotionAdapter() {
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				frame.getTextArea().setText("X: " + e.getX() + "   Y: " + e.getY());
+			}
+		});
 	}
 
 }
