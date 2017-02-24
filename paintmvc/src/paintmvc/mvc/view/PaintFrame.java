@@ -31,6 +31,7 @@ public class PaintFrame extends JFrame {
 	private JButton btnLineColor;
 	private Color lineColor = Color.BLACK;
 	private Color areaColor = Color.WHITE;
+	private JButton btnAreaColor;
 	
 	public Color getLineColor(){
 		return lineColor;
@@ -139,6 +140,19 @@ public class PaintFrame extends JFrame {
 		});
 		btnLineColor.setBackground(lineColor);
 		pnlTool.add(btnLineColor);
+		
+		btnAreaColor = new JButton("Area Color");
+		btnAreaColor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				areaColor = JColorChooser.showDialog(null, "Izabveri boju", areaColor);
+				if(areaColor != null){
+					areaColor = areaColor;
+					btnAreaColor.setBackground(areaColor);
+				}
+			}
+		});
+		btnAreaColor.setBackground(areaColor);
+		pnlTool.add(btnAreaColor);
 		
 		panel.setBackground(Color.WHITE);
 		contentPane.add(panel, BorderLayout.CENTER);
