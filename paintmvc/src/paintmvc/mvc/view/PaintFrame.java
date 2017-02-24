@@ -17,6 +17,10 @@ import javax.swing.JButton;
 import javax.swing.JColorChooser;
 
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class PaintFrame extends JFrame {
 
@@ -32,7 +36,16 @@ public class PaintFrame extends JFrame {
 	private Color lineColor = Color.BLACK;
 	private Color areaColor = Color.WHITE;
 	private JButton btnAreaColor;
+	private JToggleButton tglbtnCircle;
 	
+	public JToggleButton getTglbtnCircle() {
+		return tglbtnCircle;
+	}
+
+	public void setTglbtnCircle(JToggleButton tglbtnCircle) {
+		this.tglbtnCircle = tglbtnCircle;
+	}
+
 	public Color getLineColor(){
 		return lineColor;
 	}
@@ -120,6 +133,10 @@ public class PaintFrame extends JFrame {
 		tglbtnLine = new JToggleButton("Line");
 		buttonGroup.add(tglbtnLine);
 		pnlTool.add(tglbtnLine);
+		
+		tglbtnCircle = new JToggleButton("Circle");
+		buttonGroup.add(tglbtnCircle);
+		pnlTool.add(tglbtnCircle);
 		
 		tglbtnSelect = new JToggleButton("Select");
 		buttonGroup.add(tglbtnSelect);

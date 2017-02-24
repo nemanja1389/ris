@@ -13,6 +13,13 @@ public class Circle extends SurfaceShape {
 		this.radius = radius;
 	}
 	
+	public Circle(Point centerCircle, int radius, Color lineColor, Color internalColor){
+		super(lineColor, internalColor);
+		this.centerCircle = centerCircle;
+		this.radius = radius;
+	}
+	
+	
 	public Circle(Point centerCircle, int radisu, boolean selected, Color lineColor, Color internalColor){
 		super(selected, lineColor, internalColor);
 		this.centerCircle = centerCircle;

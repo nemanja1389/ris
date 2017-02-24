@@ -14,6 +14,8 @@ import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
 
+import paintmvc.dialogs.CircleDialog;
+import paintmvc.geometry.Circle;
 import paintmvc.geometry.Line;
 import paintmvc.geometry.Point;
 import paintmvc.geometry.Shape;
@@ -66,8 +68,11 @@ public class PaintController {
 			@Override
 			public void mouseClicked(MouseEvent e){
 				if(frame.getTglbtnPoint().isSelected()){
+					
 					model.getShape().add(new Point(e.getX(), e.getY(), frame.getLineColor()));
+					
 				} else if(frame.getTglbtnLine().isSelected()){
+					
 					if(mouseClicked%2 == 0){
 						startPoint = new Point(e.getX(), e.getY(), frame.getLineColor());
 						mouseClicked++;
@@ -75,7 +80,26 @@ public class PaintController {
 						model.getShape().add(new Line(startPoint, new Point(e.getX(), e.getY(), frame.getLineColor()), frame.getLineColor()));
 						mouseClicked = 0;
 					}
+					
+				} else if(frame.getTglbtnCircle().isSelected()){
+					
+					CircleDialog dialog = new CircleDialog();
+					dialog.setLocationRelativeTo(null);
+					dialog.getTxtX().setText(String.valueOf(e.getX()));
+					dialog.getTxtY().setText(String.valueOf(e.getY()));
+					dialog.getTxtX().setEditable(false);
+					dialog.getTxtY().setEditable(false);
+					dialog.getTxtRadius().setFocusable(true);
+					dialog.setModal(true);
+					dialog.setVisible(true);
+					try{
+						model.getShape().add(new Circle(new Point(e.getX(), e.getY(), frame.getLineColor()), Integer.parseInt(dialog.getKp()), frame.getLineColor(), frame.getAreaColor()));
+					} catch (NumberFormatException e2) {
+						
+					}
+					
 				} else if(frame.getTglbtnSelect().isSelected()){
+					
 					Iterator it = model.getShape().iterator();
 					ArrayList select = new ArrayList<>();
 					Shape s1 = null;

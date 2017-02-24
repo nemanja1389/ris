@@ -14,6 +14,11 @@ public abstract class SurfaceShape extends Shape {
 		this.internalColor = internalColor;
 	}
 	
+	public SurfaceShape(Color lineColor, Color internalColor){
+		this.internalColor = internalColor;
+		this.lineColor = lineColor;
+	}
+
 	public Color getInternalColor() {
 		return internalColor;
 	}
