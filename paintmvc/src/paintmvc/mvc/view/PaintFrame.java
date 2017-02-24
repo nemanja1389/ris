@@ -14,6 +14,8 @@ import java.awt.event.ActionListener;
 import java.awt.Color;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
+
 import java.awt.event.ActionEvent;
 
 public class PaintFrame extends JFrame {
@@ -28,7 +30,7 @@ public class PaintFrame extends JFrame {
 	private JButton btnDelete;
 	private JButton btnLineColor;
 	private Color lineColor = Color.BLACK;
-	private Color areaColor = Color.BLACK;
+	private Color areaColor = Color.WHITE;
 	
 	public Color getLineColor(){
 		return lineColor;
@@ -128,9 +130,14 @@ public class PaintFrame extends JFrame {
 		btnLineColor = new JButton("Line color");
 		btnLineColor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				lineColor = JColorChooser.showDialog(null, "Izaberi boju", lineColor);
+				if(lineColor != null){
+					lineColor = lineColor;
+					btnLineColor.setBackground(lineColor);
+				}
 			}
 		});
+		btnLineColor.setBackground(lineColor);
 		pnlTool.add(btnLineColor);
 		
 		panel.setBackground(Color.WHITE);

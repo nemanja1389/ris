@@ -66,13 +66,13 @@ public class PaintController {
 			@Override
 			public void mouseClicked(MouseEvent e){
 				if(frame.getTglbtnPoint().isSelected()){
-					model.getShape().add(new Point(e.getX(), e.getY(), Color.BLACK));
+					model.getShape().add(new Point(e.getX(), e.getY(), frame.getLineColor()));
 				} else if(frame.getTglbtnLine().isSelected()){
 					if(mouseClicked%2 == 0){
-						startPoint = new Point(e.getX(), e.getY(), Color.BLACK);
+						startPoint = new Point(e.getX(), e.getY(), frame.getLineColor());
 						mouseClicked++;
 					} else {
-						model.getShape().add(new Line(startPoint, new Point(e.getX(), e.getY(), Color.BLACK), Color.BLACK));
+						model.getShape().add(new Line(startPoint, new Point(e.getX(), e.getY(), frame.getLineColor()), frame.getLineColor()));
 						mouseClicked = 0;
 					}
 				} else if(frame.getTglbtnSelect().isSelected()){
