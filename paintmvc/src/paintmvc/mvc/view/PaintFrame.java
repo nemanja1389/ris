@@ -37,6 +37,7 @@ public class PaintFrame extends JFrame {
 	private Color areaColor = Color.WHITE;
 	private JButton btnAreaColor;
 	private JToggleButton tglbtnCircle;
+	private JToggleButton tglbtnSquare;
 	
 	public JButton getBtnLineColor() {
 		return btnLineColor;
@@ -52,6 +53,14 @@ public class PaintFrame extends JFrame {
 
 	public void setBtnAreaColor(JButton btnAreaColor) {
 		this.btnAreaColor = btnAreaColor;
+	}
+	
+	public JToggleButton getTglBtnSquare() {
+		return tglbtnSquare;
+	}
+
+	public void setTglBtnSquare(JToggleButton tglBtnSquare) {
+		this.tglbtnSquare = tglBtnSquare;
 	}
 
 	public JToggleButton getTglbtnCircle() {
@@ -154,6 +163,9 @@ public class PaintFrame extends JFrame {
 		tglbtnCircle = new JToggleButton("Circle");
 		buttonGroup.add(tglbtnCircle);
 		pnlTool.add(tglbtnCircle);
+		
+		tglbtnSquare = new JToggleButton("Square");
+		pnlTool.add(tglbtnSquare);
 		
 		tglbtnSelect = new JToggleButton("Select");
 		buttonGroup.add(tglbtnSelect);

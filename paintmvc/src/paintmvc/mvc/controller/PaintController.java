@@ -19,6 +19,7 @@ import paintmvc.geometry.Circle;
 import paintmvc.geometry.Line;
 import paintmvc.geometry.Point;
 import paintmvc.geometry.Shape;
+import paintmvc.geometry.Square;
 import paintmvc.mvc.model.PaintModel;
 import paintmvc.mvc.view.PaintView;
 import paintmvc.mvc.view.PaintFrame;
@@ -123,6 +124,8 @@ public class PaintController {
 				
 				if(frame.getTglbtnCircle().isSelected()){
 					startPoint = new Point(e.getX(), e.getY(), lineColor);
+				}else if(frame.getTglBtnSquare().isSelected()){
+					startPoint = new Point(e.getX(), e.getY(), lineColor);
 				}
 			}
 			
@@ -130,6 +133,8 @@ public class PaintController {
 			public void mouseReleased(MouseEvent e){
 				if(frame.getTglbtnCircle().isSelected()){
 					model.getShape().add(new Circle(startPoint, (int)startPoint.distance(new Point(e.getX(), e.getY())), lineColor, areaColor));
+				}else if(frame.getTglBtnSquare().isSelected()){
+					model.getShape().add(new Square(startPoint, (int)startPoint.distance(new Point(e.getX(), e.getY())), lineColor, areaColor));
 				}
 				
 			}
