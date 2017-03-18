@@ -31,6 +31,8 @@ public class PaintController {
 	private PaintFrame frame = new PaintFrame(view);
 	int mouseClicked = 0;
 	Point startPoint;
+	private Color lineColor = Color.BLACK;
+	private Color areaColor = Color.WHITE;
 
 
 	public PaintView getView() {
@@ -69,19 +71,19 @@ public class PaintController {
 			public void mouseClicked(MouseEvent e){
 				if(frame.getTglbtnPoint().isSelected()){
 					
-					model.getShape().add(new Point(e.getX(), e.getY(), frame.getLineColor()));
+					model.getShape().add(new Point(e.getX(), e.getY(), lineColor));
 					
 				} else if(frame.getTglbtnLine().isSelected()){
 					
 					if(mouseClicked%2 == 0){
-						startPoint = new Point(e.getX(), e.getY(), frame.getLineColor());
+						startPoint = new Point(e.getX(), e.getY(), lineColor);
 						mouseClicked++;
 					} else {
-						model.getShape().add(new Line(startPoint, new Point(e.getX(), e.getY(), frame.getLineColor()), frame.getLineColor()));
+						model.getShape().add(new Line(startPoint, new Point(e.getX(), e.getY(), lineColor), lineColor));
 						mouseClicked = 0;
 					}
 					
-				} else if(frame.getTglbtnCircle().isSelected()){
+				} /*else if(frame.getTglbtnCircle().isSelected()){
 					
 					CircleDialog dialog = new CircleDialog();
 					dialog.setLocationRelativeTo(null);
@@ -89,16 +91,15 @@ public class PaintController {
 					dialog.getTxtY().setText(String.valueOf(e.getY()));
 					dialog.getTxtX().setEditable(false);
 					dialog.getTxtY().setEditable(false);
-					dialog.getTxtRadius().setFocusable(true);
-					dialog.setModal(true);
+					dialog.getTxtRadius().grabFocus();
 					dialog.setVisible(true);
 					try{
-						model.getShape().add(new Circle(new Point(e.getX(), e.getY(), frame.getLineColor()), Integer.parseInt(dialog.getKp()), frame.getLineColor(), frame.getAreaColor()));
+						model.getShape().add(new Circle(new Point(e.getX(), e.getY(), lineColor), Integer.parseInt(dialog.getKp()), lineColor, areaColor));
 					} catch (NumberFormatException e2) {
 						
 					}
 					
-				} else if(frame.getTglbtnSelect().isSelected()){
+				}*/ else if(frame.getTglbtnSelect().isSelected()){
 					
 					Iterator it = model.getShape().iterator();
 					ArrayList select = new ArrayList<>();
@@ -116,8 +117,26 @@ public class PaintController {
 					}
 				}
 			}
+			
+			@Override
+			public void mousePressed(MouseEvent e){
+				
+				if(frame.getTglbtnCircle().isSelected()){
+					startPoint = new Point(e.getX(), e.getY(), lineColor);
+				}
+			}
+			
+			@Override
+			public void mouseReleased(MouseEvent e){
+				if(frame.getTglbtnCircle().isSelected()){
+					model.getShape().add(new Circle(startPoint, (int)startPoint.distance(new Point(e.getX(), e.getY())), lineColor, areaColor));
+				}
+				
+			}
 		});
+		
 		this.frame.getBtnDelete().addActionListener(new ActionListener() {
+			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				Iterator it = model.getShape().iterator();
@@ -128,6 +147,29 @@ public class PaintController {
 						if (poruka == JOptionPane.OK_OPTION)
 							it.remove();
 					}
+				}
+			}
+		});
+		this.frame.getBtnLineColor().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				lineColor = JColorChooser.showDialog(null, "Izaberi boju", lineColor);
+				if(lineColor != null){
+					lineColor = lineColor;
+					frame.getBtnLineColor().setBackground(lineColor);
+				}
+			}
+		});
+		
+		this.frame.getBtnAreaColor().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				areaColor = JColorChooser.showDialog(null, "Izabveri boju", areaColor);
+				if(areaColor != null){
+					areaColor = areaColor;
+					frame.getBtnAreaColor().setBackground(areaColor);
 				}
 			}
 		});

@@ -1,9 +1,11 @@
 package paintmvc.dialogs;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -22,7 +24,25 @@ public class CircleDialog extends JDialog {
 	public String kx;
 	public String ky;
 	public String kp;
+	private Color lineColor = Color.BLACK;
+	private Color areaColor = Color.WHITE;
 
+	public Color getLineColor(){
+		return lineColor;
+	}
+	
+	public void setLineColor(Color lineColor){
+		this.lineColor = lineColor;
+	}
+	
+	public Color getAreaColor(){
+		return areaColor;
+	}
+	
+	public void setAreaColor(Color areaColor){
+		this.areaColor = areaColor;
+	}
+	
 	public JTextField getTxtX() {
 		return txtX;
 	}
@@ -76,7 +96,7 @@ public class CircleDialog extends JDialog {
 	 */
 	public CircleDialog() {
 		setModal(true);
-		setBounds(100, 100, 226, 195);
+		setBounds(100, 100, 230, 190);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);

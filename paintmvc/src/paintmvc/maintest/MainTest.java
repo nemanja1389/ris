@@ -2,6 +2,8 @@ package paintmvc.maintest;
 
 import java.awt.Graphics;
 
+import javax.swing.JFrame;
+
 import paintmvc.geometry.Line;
 import paintmvc.geometry.Point;
 import paintmvc.mvc.controller.PaintController;
