@@ -19,6 +19,7 @@ public class MainTest {
 		PaintFrame frame = new PaintFrame(view);
 		frame.setLocationRelativeTo(null);
 		PaintController controller = new PaintController(view, model, frame);
+		controller.showInPaint();
 		frame.setVisible(true);
 	}
 
