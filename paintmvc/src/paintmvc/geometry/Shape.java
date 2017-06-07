@@ -22,6 +22,10 @@ public abstract class Shape {
 	 */
 	public Shape(){}
 	
+	/**
+	 * Konsturktor koji prihvata jedan parametar
+	 * @param lineColor
+	 */
 	public Shape(Color lineColor){
 		this.lineColor = lineColor;
 	}
@@ -37,7 +41,7 @@ public abstract class Shape {
 	}
 
 	/**
-	 * Metoda pristupa isSelected()
+	 * Metoda isSelected()
 	 * @return
 	 */
 	public boolean isSelected() {
@@ -45,7 +49,7 @@ public abstract class Shape {
 	}
 
 	/**
-	 * Metoda pristupa setSelected(boolean selected)
+	 * Metoda setSelected(boolean selected)
 	 * @param selected
 	 */
 	public void setSelected(boolean selected) {
@@ -53,7 +57,7 @@ public abstract class Shape {
 	}
 
 	/**
-	 * Metoda pristupa getLineColor()
+	 * Metoda getLineColor()
 	 * @return
 	 */
 	public Color getLineColor() {
@@ -61,7 +65,7 @@ public abstract class Shape {
 	}
 
 	/**
-	 * Metoda pristupa setLineColor(Color lineColor)
+	 * Metoda setLineColor(Color lineColor)
 	 * @param lineColor
 	 */
 	public void setLineColor(Color lineColor) {
@@ -69,18 +73,17 @@ public abstract class Shape {
 	}
 	
 	/**
-	 * Metoda koja prihvata sledece prosledjene parametre:
+	 * Metoda koja proverava da li oblik sadrzi x i y
 	 * @param x
 	 * @param y
 	 * @return
-	 * i proverava da li se odredjene kordinate x i y nalaze u datom obliku
+	 * 
 	 */
 	public abstract boolean contains(int x, int y);
 	
 	/**
-	 * Metoda koja prihvata sledeci parametar:
+	 * Metoda koja iscrtava oblike
 	 * @param g
-	 * i iscrtava oblik
 	 */
 	public abstract void draw(Graphics g);
 

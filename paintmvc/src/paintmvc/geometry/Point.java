@@ -16,8 +16,28 @@ public class Point extends Shape {
 	private int x = 0;
 	private int y = 0;
 	
+	/**
+	 * Prazan konstruktor
+	 */
 	public Point(){}
 	
+
+	/**
+	 * Konstuktor koji prihvata dva parametra
+	 * @param x
+	 * @param y
+	 */
+	public Point(int x, int y){
+		this.x = x;
+		this.y = y;
+	}
+	
+	/**
+	 * Konsturktor koji prihvata tri parametra
+	 * @param x
+	 * @param y
+	 * @param lineColor
+	 */
 	public Point(int x, int y, Color lineColor){
 		super(lineColor);
 		this.x = x;
@@ -25,7 +45,7 @@ public class Point extends Shape {
 	}
 	
 	/**
-	 * Konstruktor koji prihvata sledece prosledjene parametre:
+	 * Konstruktor koji prihvata cetri parametra
 	 * @param x
 	 * @param y
 	 * @param selected
@@ -38,17 +58,7 @@ public class Point extends Shape {
 	}
 	
 	/**
-	 * Konstuktor koji prihvata sledece prosledjene parametre:
-	 * @param x
-	 * @param y
-	 */
-	public Point(int x, int y){
-		this.x = x;
-		this.y = y;
-	}
-	
-	/**
-	 * Metoda pristupa getX()
+	 * Metoda getX()
 	 * @return
 	 */
 	public int getX() {
@@ -56,7 +66,7 @@ public class Point extends Shape {
 	}
 	
 	/**
-	 * Metoda pristupa setX()
+	 * Metoda setX()
 	 * @param x
 	 */
 	public void setX(int x) {
@@ -64,7 +74,7 @@ public class Point extends Shape {
 	}
 	
 	/**
-	 * Metoda pristupa getY()
+	 * Metoda getY()
 	 * @return 
 	 */
 	public int getY() {
@@ -72,7 +82,7 @@ public class Point extends Shape {
 	}
 
 	/**
-	 * Metoda pristupa setY()
+	 * Metoda setY()
 	 * @param y
 	 */
 	public void setY(int y) {
@@ -80,9 +90,8 @@ public class Point extends Shape {
 	}
 
 	/**
-	 * Metoda koja prihvata sledeci parametar:
+	 * Metoda koja proverava udaljenost izmedju dve tacke
 	 * @param point
-	 * vraca udaljenost izmedju dve tacke
 	 * @return
 	 */
 	public double distance(Point point) {
@@ -90,20 +99,27 @@ public class Point extends Shape {
 	}
 	
 	/**
-	 * Metoda koja prihvata sledeci parametar:
+	 * Metoda koja iscrtava plave kvadratice
 	 * @param g
-	 * i iscrtava plave kvadratice ukoliko je objekat selektovan
 	 */
 	public void drawSquare(Graphics g) {
 		g.setColor(Color.BLUE);
 		g.fillRect(this.getX()-2, this.getY()-2, 5, 5);
 	}
 	
+	/**
+	 * Metoda koja ispisuje vrednosti x i y date tacke
+	 */
 	@Override
 	public String toString(){
 		return "(" + x + "," + y + ")";
 	}
 	
+	/**
+	 * Metoda koja za prosledjeni oblik proverava da li su ti oblici jednaki ili nisu
+	 * @param o
+	 * @return true or false
+	 */
 	@Override
 	public boolean equals(Object o) {
 		if (o instanceof Point) {
@@ -118,7 +134,14 @@ public class Point extends Shape {
 			return false;
 		}
 	}
-
+	
+	
+	/**
+	 * Metoda koja proverava da li tacka sadrzi x i y vrednosti
+	 * @param x
+	 * @param y
+	 * @return true or false
+	 */
 	@Override
 	public boolean contains(int x, int y) {
 		if(new Point(this.x, this.y).distance(new Point(x,y)) <= 3){
@@ -128,6 +151,10 @@ public class Point extends Shape {
 		}
 	}
 
+	/**
+	 * Metoda za crtanje tacke
+	 * @param g
+	 */
 	@Override
 	public void draw(Graphics g) {
 		g.setColor(getLineColor());
