@@ -165,6 +165,7 @@ public class PaintFrame extends JFrame {
 		pnlTool.add(tglbtnCircle);
 		
 		tglbtnSquare = new JToggleButton("Square");
+		buttonGroup.add(tglbtnSquare);
 		pnlTool.add(tglbtnSquare);
 		
 		tglbtnSelect = new JToggleButton("Select");

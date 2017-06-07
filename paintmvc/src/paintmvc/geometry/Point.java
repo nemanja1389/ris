@@ -16,6 +16,7 @@ public class Point extends Shape {
 	private int x = 0;
 	private int y = 0;
 	
+	public Point(){}
 	
 	public Point(int x, int y, Color lineColor){
 		super(lineColor);
