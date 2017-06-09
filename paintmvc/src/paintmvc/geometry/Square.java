@@ -43,7 +43,9 @@ public class Square extends SurfaceShape {
 	
 	@Override
 	public String toString(){
-		return "gronji levi ugao=" + upLeft.toString() + ", stranica=" + width;
+		return "Square: " + "Up left point: " + "x: " + upLeft.getX() + ", y: " + upLeft.getY() + "; Width: " + width
+				+ "; Line color: " + "R: " + getLineColor().getRed() + ", " + "G: " + getLineColor().getGreen() + ", " + "B: " + getLineColor().getBlue()
+				+ "; Area color: " + "R: " + getInternalColor().getRed() + ", " + "G: " + getInternalColor().getGreen() + ", " + "B: " + getInternalColor().getBlue();
 	}
 	
 	@Override

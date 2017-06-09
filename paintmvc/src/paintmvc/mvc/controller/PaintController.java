@@ -64,7 +64,7 @@ public class PaintController {
 		this.view.addMotionMouseListen(new MouseMotionAdapter() {
 			@Override
 			public void mouseMoved(MouseEvent e) {
-				frame.getTextArea().setText("X: " + e.getX() + "   Y: " + e.getY());
+				frame.getTxtCoordinate().setText("X: " + e.getX() + "   Y: " + e.getY());
 			}
 		});
 		this.view.addMouseMotionListener(new MouseMotionListener() {
@@ -110,7 +110,7 @@ public class PaintController {
 		this.view.addMouseListen(new MouseAdapter() {
 			@Override
 			public void mouseExited(MouseEvent e) {
-				frame.getTextArea().setText("");
+				frame.getTxtCoordinate().setText("");
 			}
 			
 			@Override
@@ -156,6 +156,7 @@ public class PaintController {
 					model.getShape().add(new Circle(startPoint, (int)startPoint.distance(new Point(e.getX(), e.getY())), lineColor, areaColor));
 				}else if(frame.getTglBtnSquare().isSelected()){
 					model.getShape().add(new Square(startPoint, (int)startPoint.distance(new Point(e.getX(), e.getY())), lineColor, areaColor));
+					frame.getTxtArLog().append("Added: "+ new Square(startPoint, (int)startPoint.distance(new Point(e.getX(), e.getY())), lineColor, areaColor).toString() + '\n');
 				}else if(frame.getTglbtnLine().isSelected()){
 					model.getShape().add(new Line(startPoint, new Point(e.getX(), e.getY(), lineColor), lineColor));
 					frame.getTxtArLog().append("Added: "+ new Line(startPoint, new Point(e.getX(), e.getY(), lineColor), lineColor).toString() + '\n');

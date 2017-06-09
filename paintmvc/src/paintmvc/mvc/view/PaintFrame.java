@@ -28,7 +28,7 @@ public class PaintFrame extends JFrame {
 
 	private JPanel contentPane;
 	private PaintView panel;
-	private JTextArea textArea;
+	private JTextArea txtCoordinate;
 	private JToggleButton tglbtnPoint;
 	private JToggleButton tglbtnLine;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -119,12 +119,12 @@ public class PaintFrame extends JFrame {
 		this.panel = panel;
 	}
 
-	public JTextArea getTextArea() {
-		return textArea;
+	public JTextArea getTxtCoordinate() {
+		return txtCoordinate;
 	}
 
-	public void setTextArea(JTextArea textArea) {
-		this.textArea = textArea;
+	public void setTxtCoordinate(JTextArea textArea) {
+		this.txtCoordinate = textArea;
 	}
 
 	public JToggleButton getTglbtnPoint() {
@@ -169,9 +169,9 @@ public class PaintFrame extends JFrame {
 		paintTabPnl.add(pnlXy, BorderLayout.SOUTH);
 		pnlXy.setLayout(new BorderLayout(0, 0));
 		
-		textArea = new JTextArea();
-		textArea.setBackground(SystemColor.control);
-		pnlXy.add(textArea, BorderLayout.NORTH);
+		txtCoordinate = new JTextArea();
+		txtCoordinate.setBackground(SystemColor.control);
+		pnlXy.add(txtCoordinate, BorderLayout.NORTH);
 		
 		JPanel pnlTool = new JPanel();
 		paintTabPnl.add(pnlTool, BorderLayout.NORTH);
