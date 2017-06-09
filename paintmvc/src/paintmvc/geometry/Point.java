@@ -112,7 +112,7 @@ public class Point extends Shape {
 	 */
 	@Override
 	public String toString(){
-		return "(" + x + "," + y + ")";
+		return "Point: " + "x: " + x + ", " + "y: " + y + "; Color: " + "R: " + getLineColor().getRed() + ", " + "G: " + getLineColor().getGreen() + ", " + "B: " + getLineColor().getBlue();
 	}
 	
 	/**

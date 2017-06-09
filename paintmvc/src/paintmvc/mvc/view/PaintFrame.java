@@ -21,6 +21,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 
 public class PaintFrame extends JFrame {
 
@@ -38,6 +40,12 @@ public class PaintFrame extends JFrame {
 	private JButton btnAreaColor;
 	private JToggleButton tglbtnCircle;
 	private JToggleButton tglbtnSquare;
+	private JPanel paintTabPnl;
+	private JTabbedPane tabbedPane;
+	private JPanel logTabPnl;
+	private JPanel panel_1;
+	private JScrollPane scrollPane;
+	private JTextArea txtArLog;
 	
 	public JButton getBtnLineColor() {
 		return btnLineColor;
@@ -148,8 +156,25 @@ public class PaintFrame extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
+		panel.setBackground(Color.WHITE);
+		
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		contentPane.add(tabbedPane, BorderLayout.CENTER);
+		
+		paintTabPnl = new JPanel();
+		tabbedPane.addTab("Paint", null, paintTabPnl, null);
+		paintTabPnl.setLayout(new BorderLayout(0, 0));
+		
+		JPanel pnlXy = new JPanel();
+		paintTabPnl.add(pnlXy, BorderLayout.SOUTH);
+		pnlXy.setLayout(new BorderLayout(0, 0));
+		
+		textArea = new JTextArea();
+		textArea.setBackground(SystemColor.control);
+		pnlXy.add(textArea, BorderLayout.NORTH);
+		
 		JPanel pnlTool = new JPanel();
-		contentPane.add(pnlTool, BorderLayout.NORTH);
+		paintTabPnl.add(pnlTool, BorderLayout.NORTH);
 		pnlTool.setLayout(new BoxLayout(pnlTool, BoxLayout.X_AXIS));
 		
 		tglbtnPoint = new JToggleButton("Point");
@@ -183,15 +208,25 @@ public class PaintFrame extends JFrame {
 		btnAreaColor.setBackground(areaColor);
 		pnlTool.add(btnAreaColor);
 		
-		panel.setBackground(Color.WHITE);
-		contentPane.add(panel, BorderLayout.CENTER);
+		paintTabPnl.add(panel, BorderLayout.CENTER);
 		
-		JPanel pnlXy = new JPanel();
-		contentPane.add(pnlXy, BorderLayout.SOUTH);
-		pnlXy.setLayout(new BoxLayout(pnlXy, BoxLayout.X_AXIS));
+		logTabPnl = new JPanel();
+		tabbedPane.addTab("Log", null, logTabPnl, null);
+		logTabPnl.setLayout(new BorderLayout(0, 0));
 		
-		textArea = new JTextArea();
-		textArea.setBackground(SystemColor.control);
-		pnlXy.add(textArea);
+		scrollPane = new JScrollPane();
+		logTabPnl.add(scrollPane, BorderLayout.CENTER);
+		
+		txtArLog = new JTextArea();
+		txtArLog.setEditable(false);
+		scrollPane.setViewportView(txtArLog);
+	}
+
+	public JTextArea getTxtArLog() {
+		return txtArLog;
+	}
+
+	public void setTxtArLog(JTextArea txtArLog) {
+		this.txtArLog = txtArLog;
 	}
 }

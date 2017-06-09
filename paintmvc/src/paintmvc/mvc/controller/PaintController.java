@@ -117,6 +117,7 @@ public class PaintController {
 			public void mouseClicked(MouseEvent e){
 				if(frame.getTglbtnPoint().isSelected()){
 					model.getShape().add(new Point(e.getX(), e.getY(), lineColor));
+					frame.getTxtArLog().append("Added: "+ new Point(e.getX(), e.getY(), lineColor).toString() + '\n');
 					
 				} else if(frame.getTglbtnSelect().isSelected()){
 					
