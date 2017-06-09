@@ -154,6 +154,7 @@ public class PaintController {
 			public void mouseReleased(MouseEvent e){
 				if(frame.getTglbtnCircle().isSelected()){
 					model.getShape().add(new Circle(startPoint, (int)startPoint.distance(new Point(e.getX(), e.getY())), lineColor, areaColor));
+					frame.getTxtArLog().append("Added: "+ new Circle(startPoint, (int)startPoint.distance(new Point(e.getX(), e.getY())), lineColor, areaColor).toString() + '\n');
 				}else if(frame.getTglBtnSquare().isSelected()){
 					model.getShape().add(new Square(startPoint, (int)startPoint.distance(new Point(e.getX(), e.getY())), lineColor, areaColor));
 					frame.getTxtArLog().append("Added: "+ new Square(startPoint, (int)startPoint.distance(new Point(e.getX(), e.getY())), lineColor, areaColor).toString() + '\n');

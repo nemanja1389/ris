@@ -44,7 +44,9 @@ public class Circle extends SurfaceShape {
 
 	@Override
 	public String toString(){
-		return "centar=" + centerCircle.toString() + ", radius=" + radius + ", boja: " + getLineColor();
+		return "Circle: " + "Center point: " + "x: " + centerCircle.getX() + ", y: " + centerCircle.getY() + "; Radius: " + radius
+				+ "; Line color: " + "R: " + getLineColor().getRed() + ", " + "G: " + getLineColor().getGreen() + ", " + "B: " + getLineColor().getBlue()
+				+ "; Area color: " + "R: " + getInternalColor().getRed() + ", " + "G: " + getInternalColor().getGreen() + ", " + "B: " + getInternalColor().getBlue();
 	}
 	
 	@Override
