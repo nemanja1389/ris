@@ -51,7 +51,9 @@ public class Line extends Shape {
 	
 	@Override
 	public String toString(){
-		return startPoint.toString() + "->" + endPoint.toString();
+		return "Line: Start point: " + "x: " + startPoint.getX() + ", y: " + startPoint.getY() +  "--> End point: "
+	+ "x: " + endPoint.getX() + ", y: " + endPoint.getY()  
+	+ "; Color: " + "R: " + getLineColor().getRed() + ", " + "G: " + getLineColor().getGreen() + ", " + "B: " + getLineColor().getBlue();
 	}
 	
 	@Override

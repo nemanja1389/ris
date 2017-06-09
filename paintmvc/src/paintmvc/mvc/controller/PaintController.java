@@ -158,6 +158,7 @@ public class PaintController {
 					model.getShape().add(new Square(startPoint, (int)startPoint.distance(new Point(e.getX(), e.getY())), lineColor, areaColor));
 				}else if(frame.getTglbtnLine().isSelected()){
 					model.getShape().add(new Line(startPoint, new Point(e.getX(), e.getY(), lineColor), lineColor));
+					frame.getTxtArLog().append("Added: "+ new Line(startPoint, new Point(e.getX(), e.getY(), lineColor), lineColor).toString() + '\n');
 				}
 				
 			}
