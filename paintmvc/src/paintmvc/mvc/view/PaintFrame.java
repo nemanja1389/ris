@@ -47,6 +47,16 @@ public class PaintFrame extends JFrame {
 	private JScrollPane scrollPane;
 	private JTextArea txtArLog;
 	
+	public JToggleButton getTglbtnRectangle() {
+		return tglbtnRectangle;
+	}
+
+	public void setTglbtnRectangle(JToggleButton tglbtnRectangle) {
+		this.tglbtnRectangle = tglbtnRectangle;
+	}
+
+	private JToggleButton tglbtnRectangle;
+	
 	public JButton getBtnLineColor() {
 		return btnLineColor;
 	}
@@ -192,6 +202,10 @@ public class PaintFrame extends JFrame {
 		tglbtnSquare = new JToggleButton("Square");
 		buttonGroup.add(tglbtnSquare);
 		pnlTool.add(tglbtnSquare);
+		
+		tglbtnRectangle = new JToggleButton("Rectangle");
+		buttonGroup.add(tglbtnRectangle);
+		pnlTool.add(tglbtnRectangle);
 		
 		tglbtnSelect = new JToggleButton("Select");
 		buttonGroup.add(tglbtnSelect);

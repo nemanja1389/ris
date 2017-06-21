@@ -27,7 +27,7 @@ public abstract class SurfaceShape extends Shape {
 		this.internalColor = internalColor;
 	}
 	
-	public abstract void fillInternal(Graphics g);
+	public abstract void fillArea(Graphics g);
 	
 	public abstract double surfaceArea();
 	

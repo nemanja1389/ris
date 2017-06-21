@@ -19,6 +19,7 @@ import paintmvc.dialogs.CircleDialog;
 import paintmvc.geometry.Circle;
 import paintmvc.geometry.Line;
 import paintmvc.geometry.Point;
+import paintmvc.geometry.Rectangle;
 import paintmvc.geometry.Shape;
 import paintmvc.geometry.Square;
 import paintmvc.mvc.model.PaintModel;
@@ -104,6 +105,14 @@ public class PaintController {
 						model.getShape().remove(model.getShape().size()-1);
 						model.getShape().add(new Square(startPoint, (int)startPoint.distance(new Point(e.getX(), e.getY())), lineColor, areaColor));
 					}
+				}else if(frame.getTglbtnRectangle().isSelected()){
+					if(mouseDragged == 0){
+						model.getShape().add(new Rectangle(startPoint, e.getX() - startPoint.getX(), e.getY() - startPoint.getY(), lineColor, areaColor));
+						mouseDragged = 1;
+					} else {
+						model.getShape().remove(model.getShape().size()-1);
+						model.getShape().add(new Rectangle(startPoint, e.getX() - startPoint.getX(), e.getY() - startPoint.getY(), lineColor, areaColor));
+					}
 				}
 			}
 		});
@@ -117,7 +126,7 @@ public class PaintController {
 			public void mouseClicked(MouseEvent e){
 				if(frame.getTglbtnPoint().isSelected()){
 					model.getShape().add(new Point(e.getX(), e.getY(), lineColor));
-					frame.getTxtArLog().append("Added: "+ new Point(e.getX(), e.getY(), lineColor).toString() + '\n');
+					frame.getTxtArLog().append("Add: "+ new Point(e.getX(), e.getY(), lineColor).toString() + '\n');
 					
 				} else if(frame.getTglbtnSelect().isSelected()){
 					
@@ -134,6 +143,7 @@ public class PaintController {
 					}
 					if(s1 != null){
 						s1.setSelected(true);
+						frame.getTxtArLog().append("Select: " + s1.toString() + '\n');
 					}
 				}
 			}
@@ -147,6 +157,8 @@ public class PaintController {
 					startPoint = new Point(e.getX(), e.getY(), lineColor);
 				}else if(frame.getTglbtnLine().isSelected()){
 					startPoint = new Point(e.getX(), e.getY(), lineColor);
+				}else if(frame.getTglbtnRectangle().isSelected()){
+					startPoint = new Point(e.getX(), e.getY(), lineColor);
 				}
 			}
 			
@@ -154,13 +166,16 @@ public class PaintController {
 			public void mouseReleased(MouseEvent e){
 				if(frame.getTglbtnCircle().isSelected()){
 					model.getShape().add(new Circle(startPoint, (int)startPoint.distance(new Point(e.getX(), e.getY())), lineColor, areaColor));
-					frame.getTxtArLog().append("Added: "+ new Circle(startPoint, (int)startPoint.distance(new Point(e.getX(), e.getY())), lineColor, areaColor).toString() + '\n');
+					frame.getTxtArLog().append("Add: "+ new Circle(startPoint, (int)startPoint.distance(new Point(e.getX(), e.getY())), lineColor, areaColor).toString() + '\n');
 				}else if(frame.getTglBtnSquare().isSelected()){
 					model.getShape().add(new Square(startPoint, (int)startPoint.distance(new Point(e.getX(), e.getY())), lineColor, areaColor));
-					frame.getTxtArLog().append("Added: "+ new Square(startPoint, (int)startPoint.distance(new Point(e.getX(), e.getY())), lineColor, areaColor).toString() + '\n');
+					frame.getTxtArLog().append("Add: "+ new Square(startPoint, (int)startPoint.distance(new Point(e.getX(), e.getY())), lineColor, areaColor).toString() + '\n');
 				}else if(frame.getTglbtnLine().isSelected()){
 					model.getShape().add(new Line(startPoint, new Point(e.getX(), e.getY(), lineColor), lineColor));
-					frame.getTxtArLog().append("Added: "+ new Line(startPoint, new Point(e.getX(), e.getY(), lineColor), lineColor).toString() + '\n');
+					frame.getTxtArLog().append("Add: "+ new Line(startPoint, new Point(e.getX(), e.getY(), lineColor), lineColor).toString() + '\n');
+				}else if(frame.getTglbtnRectangle().isSelected()){
+					model.getShape().add(new Rectangle(startPoint, e.getX() - startPoint.getX(), e.getY() - startPoint.getY(), lineColor, areaColor));
+					frame.getTxtArLog().append("Add: "+ new Rectangle(startPoint, e.getX() - startPoint.getX(), e.getY() - startPoint.getY(), lineColor, areaColor).toString() + '\n');
 				}
 				
 			}
@@ -173,10 +188,11 @@ public class PaintController {
 				Iterator it = model.getShape().iterator();
 				while (it.hasNext()){
 					Shape s = (Shape)it.next();
-					if(s.isSelected()){						
+					if(s.isSelected()){					
 						int poruka = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da obrišete oblik?", "Upozorenje!", JOptionPane.WARNING_MESSAGE);
-						if (poruka == JOptionPane.OK_OPTION)
+						if (poruka == JOptionPane.OK_OPTION){
 							it.remove();
+						}
 					}
 				}
 			}

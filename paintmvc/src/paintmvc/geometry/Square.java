@@ -5,16 +5,18 @@ import java.awt.Graphics;
 
 public class Square extends SurfaceShape {
 	
-	private Point upLeft;
-	private int width;
+	protected Point upLeft;
+	protected int width;
+	
+	public Square(){}
 	
 	public Square (Point upLeft, int width){
 		this.upLeft=upLeft;
 		this.width=width;
 	}
 	
-	public Square (Point upLeft, int width, Color lineColor, Color internalColor){
-		super(lineColor, internalColor);
+	public Square (Point upLeft, int width, Color lineColor, Color areaColor){
+		super(lineColor, areaColor);
 		this.upLeft=upLeft;
 		this.width=width;
 	}
@@ -64,7 +66,7 @@ public class Square extends SurfaceShape {
 	}
 
 	@Override
-	public void fillInternal(Graphics g) {
+	public void fillArea(Graphics g) {
 		g.setColor(getInternalColor());
 		g.fillRect(upLeft.getX(), upLeft.getY(), width, width);
 	}
@@ -93,7 +95,7 @@ public class Square extends SurfaceShape {
 
 	@Override
 	public void draw(Graphics g) {
-		fillInternal(g);
+		fillArea(g);
 		g.setColor(getLineColor());
 		g.drawRect(upLeft.getX(), upLeft.getY(), width, width);
 		if(isSelected()){
