@@ -56,6 +56,15 @@ public class PaintFrame extends JFrame {
 	}
 
 	private JToggleButton tglbtnRectangle;
+	public JToggleButton getTglbtnHexagon() {
+		return tglbtnHexagon;
+	}
+
+	public void setTglbtnHexagon(JToggleButton tglbtnHexagon) {
+		this.tglbtnHexagon = tglbtnHexagon;
+	}
+
+	private JToggleButton tglbtnHexagon;
 	
 	public JButton getBtnLineColor() {
 		return btnLineColor;
@@ -206,6 +215,10 @@ public class PaintFrame extends JFrame {
 		tglbtnRectangle = new JToggleButton("Rectangle");
 		buttonGroup.add(tglbtnRectangle);
 		pnlTool.add(tglbtnRectangle);
+		
+		tglbtnHexagon = new JToggleButton("Hexagon");
+		buttonGroup.add(tglbtnHexagon);
+		pnlTool.add(tglbtnHexagon);
 		
 		tglbtnSelect = new JToggleButton("Select");
 		buttonGroup.add(tglbtnSelect);

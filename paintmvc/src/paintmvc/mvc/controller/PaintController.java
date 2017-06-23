@@ -17,6 +17,7 @@ import javax.swing.JToggleButton;
 
 import paintmvc.dialogs.CircleDialog;
 import paintmvc.geometry.Circle;
+import paintmvc.geometry.HexagonAdapter;
 import paintmvc.geometry.Line;
 import paintmvc.geometry.Point;
 import paintmvc.geometry.Rectangle;
@@ -85,9 +86,7 @@ public class PaintController {
 					} else {
 						model.getShape().remove(model.getShape().size()-1);
 						model.getShape().add(new Circle(startPoint, (int)startPoint.distance(new Point(e.getX(), e.getY())), lineColor, areaColor));
-					}
-					
-					
+					}					
 				}else if(frame.getTglbtnLine().isSelected()){
 					if(mouseDragged == 0){
 						model.getShape().add(new Line(startPoint, new Point(e.getX(), e.getY(), lineColor), lineColor));
@@ -95,8 +94,7 @@ public class PaintController {
 					} else {
 						model.getShape().remove(model.getShape().size()-1);
 						model.getShape().add(new Line(startPoint, new Point(e.getX(), e.getY(), lineColor), lineColor));
-					}
-					
+					}					
 				}else if(frame.getTglBtnSquare().isSelected()){
 					if(mouseDragged == 0){
 						model.getShape().add(new Square(startPoint, (int)startPoint.distance(new Point(e.getX(), e.getY())), lineColor, areaColor));
@@ -112,6 +110,14 @@ public class PaintController {
 					} else {
 						model.getShape().remove(model.getShape().size()-1);
 						model.getShape().add(new Rectangle(startPoint, e.getX() - startPoint.getX(), e.getY() - startPoint.getY(), lineColor, areaColor));
+					}
+				}else if(frame.getTglbtnHexagon().isSelected()){
+					if(mouseDragged == 0){
+						model.getShape().add(new HexagonAdapter(startPoint.getX(), startPoint.getY(), (int)startPoint.distance(new Point(e.getX(), e.getY())), lineColor, areaColor));
+						mouseDragged = 1;
+					} else {
+						model.getShape().remove(model.getShape().size()-1);
+						model.getShape().add(new HexagonAdapter(startPoint.getX(), startPoint.getY(), (int)startPoint.distance(new Point(e.getX(), e.getY())), lineColor, areaColor));
 					}
 				}
 			}
@@ -159,6 +165,8 @@ public class PaintController {
 					startPoint = new Point(e.getX(), e.getY(), lineColor);
 				}else if(frame.getTglbtnRectangle().isSelected()){
 					startPoint = new Point(e.getX(), e.getY(), lineColor);
+				}else if(frame.getTglbtnHexagon().isSelected()){
+					startPoint = new Point(e.getX(), e.getY(), lineColor);
 				}
 			}
 			
@@ -176,6 +184,8 @@ public class PaintController {
 				}else if(frame.getTglbtnRectangle().isSelected()){
 					model.getShape().add(new Rectangle(startPoint, e.getX() - startPoint.getX(), e.getY() - startPoint.getY(), lineColor, areaColor));
 					frame.getTxtArLog().append("Add: "+ new Rectangle(startPoint, e.getX() - startPoint.getX(), e.getY() - startPoint.getY(), lineColor, areaColor).toString() + '\n');
+				}else if(frame.getTglbtnHexagon().isSelected()){
+					model.getShape().add(new HexagonAdapter(startPoint.getX(), startPoint.getY(), (int)startPoint.distance(new Point(e.getX(), e.getY())), lineColor, areaColor));
 				}
 				
 			}
