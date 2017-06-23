@@ -24,8 +24,8 @@ public class Point extends Shape {
 
 	/**
 	 * Konstuktor koji prihvata dva parametra
-	 * @param x
-	 * @param y
+	 * @param x koordinata x
+	 * @param y koordinata y
 	 */
 	public Point(int x, int y){
 		this.x = x;
@@ -34,9 +34,9 @@ public class Point extends Shape {
 	
 	/**
 	 * Konsturktor koji prihvata tri parametra
-	 * @param x
-	 * @param y
-	 * @param lineColor
+	 * @param x koordinata x
+	 * @param y koordinata y
+	 * @param lineColor boja taèke
 	 */
 	public Point(int x, int y, Color lineColor){
 		super(lineColor);
@@ -46,10 +46,10 @@ public class Point extends Shape {
 	
 	/**
 	 * Konstruktor koji prihvata cetri parametra
-	 * @param x
-	 * @param y
-	 * @param selected
-	 * @param lineColor
+	 * @param x koordinata x
+	 * @param y koordinata y
+	 * @param selected selektovana taèka (true or false)
+	 * @param lineColor boja taèke
 	 */
 	public Point(int x, int y, boolean selected, Color lineColor) {
 		super(selected, lineColor);
@@ -58,41 +58,41 @@ public class Point extends Shape {
 	}
 	
 	/**
-	 * Metoda getX()
-	 * @return
+	 * Get metoda vraæa x koordinatu taèke.
+	 * @return x
 	 */
 	public int getX() {
 		return x;
 	}
 	
 	/**
-	 * Metoda setX()
-	 * @param x
+	 * Set metoda postavlja x koordinatu taèke.
+	 * @param x koordinata x taèke
 	 */
 	public void setX(int x) {
 		this.x = x;
 	}
 	
 	/**
-	 * Metoda getY()
-	 * @return 
+	 * Get metoda vraæa y koordinatu taèke.
+	 * @return y
 	 */
 	public int getY() {
 		return y;
 	}
 
 	/**
-	 * Metoda setY()
-	 * @param y
+	 * Set metoda postavlja y koordinatu taèke.
+	 * @param y koordinata y taèke
 	 */
 	public void setY(int y) {
 		this.y = y;
 	}
 
 	/**
-	 * Metoda koja proverava udaljenost izmedju dve tacke
-	 * @param point
-	 * @return
+	 * Metoda proverava udaljenost izmedju dve tacke
+	 * @param point prosleðena taèka do koje se meri udaljenost
+	 * @return udaljenost izmeðu dve taèke
 	 */
 	public double distance(Point point) {
 		return Math.sqrt(((point.x - this.x)*(point.x - this.x))+((point.y - this.y)*(point.y - this.y)));
@@ -100,7 +100,7 @@ public class Point extends Shape {
 	
 	/**
 	 * Metoda koja iscrtava plave kvadratice
-	 * @param g
+	 * @param g grafika
 	 */
 	public void drawSquare(Graphics g) {
 		g.setColor(Color.BLUE);
@@ -108,7 +108,7 @@ public class Point extends Shape {
 	}
 	
 	/**
-	 * Metoda koja ispisuje vrednosti x i y date tacke
+	 * Preklopljena metoda koja ispisuje informacije o taèki
 	 */
 	@Override
 	public String toString(){
@@ -116,8 +116,8 @@ public class Point extends Shape {
 	}
 	
 	/**
-	 * Metoda koja za prosledjeni oblik proverava da li su ti oblici jednaki ili nisu
-	 * @param o
+	 * Metoda koja za prosledjeni objekat da li je objekat taèka ili nije.
+	 * @param o prosleðen objekat koji se ispituje
 	 * @return true or false
 	 */
 	@Override
@@ -137,9 +137,9 @@ public class Point extends Shape {
 	
 	
 	/**
-	 * Metoda koja proverava da li tacka sadrzi x i y vrednosti
-	 * @param x
-	 * @param y
+	 * Metoda proverava da li se prosleðene koordinate x i y pripadaju taèki.
+	 * @param x koordinata x
+	 * @param y koordinata y
 	 * @return true or false
 	 */
 	@Override
@@ -152,8 +152,8 @@ public class Point extends Shape {
 	}
 
 	/**
-	 * Metoda za crtanje tacke
-	 * @param g
+	 * Metoda koja crta taèku.
+	 * @param g grafika
 	 */
 	@Override
 	public void draw(Graphics g) {

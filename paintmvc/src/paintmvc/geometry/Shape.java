@@ -24,16 +24,16 @@ public abstract class Shape {
 	
 	/**
 	 * Konsturktor koji prihvata jedan parametar
-	 * @param lineColor
+	 * @param lineColor boja linije
 	 */
 	public Shape(Color lineColor){
 		this.lineColor = lineColor;
 	}
 	
 	/**
-	 * Konstruktor koji prihvata sledece parametre:
-	 * @param selected
-	 * @param lineColor
+	 * Konstruktor koji prihvata dva parametra
+	 * @param selected selektovan (true or false)
+	 * @param lineColor boja linije
 	 */
 	public Shape(boolean selected, Color lineColor){
 		this.selected = selected;
@@ -41,49 +41,48 @@ public abstract class Shape {
 	}
 
 	/**
-	 * Metoda isSelected()
-	 * @return
+	 * Get metoda proverava da li je oblik selektovan ili ne.
+	 * @return selected
 	 */
 	public boolean isSelected() {
 		return selected;
 	}
 
 	/**
-	 * Metoda setSelected(boolean selected)
-	 * @param selected
+	 * Set metoda selektuje odnosno deselektuje oblik.
+	 * @param selected selektovan (true or false)
 	 */
 	public void setSelected(boolean selected) {
 		this.selected = selected;
 	}
 
 	/**
-	 * Metoda getLineColor()
-	 * @return
+	 * Get metoda vraæa boju linije
+	 * @return lineColor
 	 */
 	public Color getLineColor() {
 		return lineColor;
 	}
 
 	/**
-	 * Metoda setLineColor(Color lineColor)
-	 * @param lineColor
+	 * Set metoda postavlja boju linije.
+	 * @param lineColor boja linije
 	 */
 	public void setLineColor(Color lineColor) {
 		this.lineColor = lineColor;
 	}
 	
 	/**
-	 * Metoda koja proverava da li oblik sadrzi x i y
-	 * @param x
-	 * @param y
-	 * @return
-	 * 
+	 * Metoda proverava da li se prosleðene koordinate x i y pripadaju obliku.
+	 * @param x koordinata x
+	 * @param y koordinata y
+	 * @return true or false
 	 */
 	public abstract boolean contains(int x, int y);
 	
 	/**
-	 * Metoda koja iscrtava oblike
-	 * @param g
+	 * Metoda za iscrtavanje oblika.
+	 * @param g grafika
 	 */
 	public abstract void draw(Graphics g);
 

@@ -3,34 +3,74 @@ package paintmvc.geometry;
 import java.awt.Color;
 import java.awt.Graphics;
 
+/**
+ * 
+ * @author Nemanja
+ * @version 1.0
+ */
+
 public abstract class SurfaceShape extends Shape {
 	
-	protected Color internalColor;
+	protected Color areaColor;
 	
+	/**
+	 * Prazan konstruktor
+	 */
 	public SurfaceShape(){}
 	
-	public SurfaceShape(boolean selected, Color lineColor, Color internalColor){
-		super(selected, lineColor);
-		this.internalColor = internalColor;
-	}
-	
-	public SurfaceShape(Color lineColor, Color internalColor){
-		this.internalColor = internalColor;
+	/**
+	 * Konstruktor koji prihvata dva parametra
+	 * @param lineColor boja linije
+	 * @param areaColor boja površine oblika
+	 */
+	public SurfaceShape(Color lineColor, Color areaColor){
+		this.areaColor = areaColor;
 		this.lineColor = lineColor;
 	}
-
+	
+	/**
+	 * Konstruktor koji prihvata tri parametra
+	 * @param selected selektovan (true or false)
+	 * @param lineColor boja linije
+	 * @param areaColor boja površine oblika
+	 */
+	public SurfaceShape(boolean selected, Color lineColor, Color areaColor){
+		super(selected, lineColor);
+		this.areaColor = areaColor;
+	}
+	
+	/**
+	 * Get metoda vraæa boju površine oblika.
+	 * @return areaColor
+	 */
 	public Color getInternalColor() {
-		return internalColor;
+		return areaColor;
 	}
 	
-	public void setInternalColor(Color internalColor) {
-		this.internalColor = internalColor;
+	/**
+	 * Set metoda postavlja boju površine oblika.
+	 * @param areaColor boja površine
+	 */
+	public void setAreaColor(Color areaColor) {
+		this.areaColor = areaColor;
 	}
 	
+	/**
+	 * Metoda boji površinu oblika.
+	 * @param g grafika
+	 */
 	public abstract void fillArea(Graphics g);
 	
+	/**
+	 * Metoda izraèunava površinu oblika.
+	 * @return površina oblika
+	 */
 	public abstract double surfaceArea();
 	
+	/**
+	 * Metoda izraèunava obim oblika.
+	 * @return obim oblika
+	 */
 	public abstract double volume();
 
 }

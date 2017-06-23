@@ -3,46 +3,94 @@ package paintmvc.geometry;
 import java.awt.Color;
 import java.awt.Graphics;
 
+/**
+ * 
+ * @author Nemanja
+ * @version 1.0
+ */
 public class Square extends SurfaceShape {
 	
 	protected Point upLeft;
 	protected int width;
 	
+	/**
+	 * Prazan konstruktor.
+	 */
 	public Square(){}
 	
+	
+	/**
+	 * Konstruktor koji prihvata dva parametra.
+	 * @param upLeft taèka gornjeg levo ugla kvadrata
+	 * @param width širina kvadrata
+	 */
 	public Square (Point upLeft, int width){
 		this.upLeft=upLeft;
 		this.width=width;
 	}
 	
+	/**
+	 * Konstruktor koji prihvata èetri parametra.
+	 * @param upLeft taèka gornjeg levo ugla kvadrata
+	 * @param width širina kvadrata
+	 * @param lineColor boja linije kvadrata
+	 * @param areaColor boja površine kvadrata
+	 */
 	public Square (Point upLeft, int width, Color lineColor, Color areaColor){
 		super(lineColor, areaColor);
 		this.upLeft=upLeft;
 		this.width=width;
 	}
 	
+	/**
+	 * Konstruktor koji prihvata pet parametara.
+	 * @param upLeft taèka gornjeg levo ugla kvadrata
+	 * @param width širina kvadrata
+	 * @param selected selektovan kvadrat (true or false)
+	 * @param lineColor boja linije kvadrata
+	 * @param areaColor boja površine kvadrata
+	 */
 	public Square (Point upLeft, int width, boolean selected, Color lineColor, Color internalColor){
 		super(selected, lineColor, internalColor);
 		this.upLeft=upLeft;
 		this.width=width;
 	}
 
+	/**
+	 * Get metoda vraæa taèku gornjeg levog ugla kvadrata.
+	 * @return upLeft
+	 */
 	public Point getUpLeft() {
 		return upLeft;
 	}
 
+	/**
+	 * Set metoda postavlja taèku za gornji levi ugao kvadrata.
+	 * @param upLeft taèka gornjeg levog ugla kvadrata
+	 */
 	public void setUpLeft(Point upLeft) {
 		this.upLeft = upLeft;
 	}
 
+	/**
+	 * Get metoda vraæa širinu kvadrata.
+	 * @return width
+	 */
 	public int getWidth() {
 		return width;
 	}
 
-	public void setWidth(int a) {
-		this.width = a;
+	/**
+	 * Set metoda postavlja širinu kvadrata.
+	 * @param width širina kvadrata
+	 */
+	public void setWidth(int width) {
+		this.width = width;
 	}
 	
+	/**
+	 * Preklopljena metoda koja ispisuje informacije o kvadratu.
+	 */
 	@Override
 	public String toString(){
 		return "Square: " + "Up left point: " + "x: " + upLeft.getX() + ", y: " + upLeft.getY() + "; Width: " + width
@@ -50,6 +98,12 @@ public class Square extends SurfaceShape {
 				+ "; Area color: " + "R: " + getInternalColor().getRed() + ", " + "G: " + getInternalColor().getGreen() + ", " + "B: " + getInternalColor().getBlue();
 	}
 	
+	
+	/**
+	 * Metoda koja za prosleðeni objekat ispituje da li je objekat kvadrat ili nije.
+	 * @param o prosleðen objekat koji se ispituje
+	 * @return true or false
+	 */
 	@Override
 	public boolean equals(Object o){
 		if (o instanceof Square){
@@ -65,22 +119,40 @@ public class Square extends SurfaceShape {
 		}
 	}
 
+	/**
+	 * Metoda boji površinu kvadrata.
+	 * @param g grafika
+	 */
 	@Override
 	public void fillArea(Graphics g) {
 		g.setColor(getInternalColor());
 		g.fillRect(upLeft.getX(), upLeft.getY(), width, width);
 	}
 
+	/**
+	 * Metoda izraèunava površinu kvadrata.
+	 * @return površina kvadrata
+	 */
 	@Override
 	public double surfaceArea() {
 		return width*width;
 	}
-
+	
+	/**
+	 * Metoda izraèunava obim kvadrata.
+	 * @return obim kvadrata
+	 */
 	@Override
 	public double volume() {
 		return width*4;
 	}
 
+	/**
+	 * Metoda proverava da li se prosleðene koordinate x i y pripadaju kvadratu.
+	 * @param x koordinata x
+	 * @param y koordinata y
+	 * @return true or false
+	 */
 	@Override
 	public boolean contains(int x, int y) {
 		if(this.getUpLeft().getX()<=x 
@@ -93,6 +165,10 @@ public class Square extends SurfaceShape {
 		}
 	}
 
+	/**
+	 * Metoda koja crta kvadrat.
+	 * @param g grafika
+	 */
 	@Override
 	public void draw(Graphics g) {
 		fillArea(g);
